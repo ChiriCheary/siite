@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,24 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Гра3000</title>
     <link rel="stylesheet" href="styles.css">
-    <script src="script.js" defer></script>
     <style>
         body {
-            background-image: url('D:/Study/Unik/Code/web/imeg/background.jpg'); 
-            background-size: cover; 
-            background-repeat: no-repeat; 
-            background-position: center; 
-            background-attachment: fixed; 
+            background-image: url('imeg/background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-attachment: fixed;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 260vh;
             margin: 0;
+            flex-direction: column;
         }
-
 
         .center-text {
             text-align: center;
+        }
+
+        .hidden {
+            display: none;
         }
 
         .image-container {
@@ -52,38 +54,62 @@
             max-width: 100%;
             height: auto;
         }
+
+        input, button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        /* Додано стиль для адаптивності висоти */
+        #page1, #page2 {
+            min-height: 100vh; /* Мінімальна висота сторінки */
+            padding: 20px; /* Простір навколо тексту */
+            box-sizing: border-box; /* Включити padding у загальну висоту */
+        }
     </style>
 </head>
 <body>
-    <main>
-        <article>
-            <div class="center-text">
-                <p style="font-size: 40px">
-                    <strong>Найкраща гра в світі, і можливо тільки ти зможеш в неї зіграти?..</strong>
-                </p>
-            </div>
-            <div class="center-text">
-                <h2>Цікаво? Гортай далі!</h2>
-                <p style="font-size: 24px;">
-                    Я презентую вам гру розроблену нашою командою:
-                </p>
-                <p style="font-size: 30px">
-                    <em>Втеча з порожнечі...</em>
-                </p>
-                <div class="image-container">
-                    <img src="D:/Study/Unik/Code/web/imeg/interface.jpeg" alt="Interface">
-                </div>
-                <div class="image-container">
-                    <img src="D:/Study/Unik/Code/web/imeg/house.jpeg" alt="house">
-                </div>
-                <div class="image-container">
-                    <img src="D:/Study/Unik/Code/web/imeg/BossFight.jpeg" alt="Boss Fight">
-                </div>
-                <form action="main.html">
-                    <button type="submit">Дізнатися більше про гру...</button>
-                </form>
-            </div>
-        </article>
-    </main>
+    <!-- Сторінка 1 -->
+    <div id="page1" class="center-text">
+        <p style="font-size: 40px"><strong>Найкраща гра в світі!</strong></p>
+        <h2>Цікаво? Гортай далі!</h2>
+        <p style="font-size: 24px;">Я презентую вам гру:</p>
+        <p style="font-size: 30px"><em>Втеча з порожнечі...</em></p>
+        <div class="image-container">
+            <img src="imeg/interface.jpeg" alt="Interface">
+        </div>
+        <div class="image-container">
+            <img src="imeg/house.jpeg" alt="House">
+        </div>
+        <div class="image-container">
+            <img src="imeg/BossFight.jpeg" alt="Boss Fight">
+        </div>
+        <button onclick="switchPage('page2')">Дізнатися більше про гру...</button>
+    </div>
+
+    <!-- Сторінка 2 -->
+    <div id="page2" class="center-text hidden">
+        <h1>Залиш свої контакти, і ми зв'яжемося з тобою!</h1>
+        <form>
+            <p>Хочеш спробувати гру і розповісти нам про знайдені баги?</p>
+            <label for="initials-input">Введіть ПІБ:</label><br>
+            <input type="text" id="initials-input" placeholder="Ваше ім'я"><br>
+            <label for="mail-input">Введіть email:</label><br>
+            <input type="email" id="mail-input" placeholder="Ваш email"><br>
+            <button>Так!</button>
+        </form>
+        <button onclick="switchPage('page1')">Назад на головну</button>
+    </div>
+
+    <script>
+        // Функція для перемикання сторінок
+        function switchPage(pageId) {
+            // Сховати всі сторінки
+            document.getElementById('page1').classList.add('hidden');
+            document.getElementById('page2').classList.add('hidden');
+            // Показати вибрану сторінку
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+    </script>
 </body>
 </html>
