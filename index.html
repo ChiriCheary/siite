@@ -60,16 +60,16 @@
             padding: 10px;
             font-size: 16px;
         }
-        /* Додано стиль для адаптивності висоти */
+       
         #page1, #page2 {
-            min-height: 100vh; /* Мінімальна висота сторінки */
-            padding: 20px; /* Простір навколо тексту */
-            box-sizing: border-box; /* Включити padding у загальну висоту */
+            min-height: 100vh; 
+            padding: 20px; 
+            box-sizing: border-box; 
         }
     </style>
 </head>
 <body>
-    <!-- Сторінка 1 -->
+  
     <div id="page1" class="center-text">
         <p style="font-size: 40px"><strong>Найкраща гра в світі!</strong></p>
         <h2>Цікаво? Гортай далі!</h2>
@@ -87,29 +87,46 @@
         <button onclick="switchPage('page2')">Дізнатися більше про гру...</button>
     </div>
 
-    <!-- Сторінка 2 -->
+ 
     <div id="page2" class="center-text hidden">
         <h1>Залиш свої контакти, і ми зв'яжемося з тобою!</h1>
-        <form>
+        <form id="contact-form">
             <p>Хочеш спробувати гру і розповісти нам про знайдені баги?</p>
             <label for="initials-input">Введіть ПІБ:</label><br>
-            <input type="text" id="initials-input" placeholder="Ваше ім'я"><br>
+            <input type="text" id="initials-input" placeholder="Ваше ім'я" required><br>
             <label for="mail-input">Введіть email:</label><br>
-            <input type="email" id="mail-input" placeholder="Ваш email"><br>
-            <button>Так!</button>
+            <input type="email" id="mail-input" placeholder="Ваш email" required><br>
+            <button type="submit">Так!</button>
         </form>
         <button onclick="switchPage('page1')">Назад на головну</button>
     </div>
 
     <script>
-        // Функція для перемикання сторінок
+     
         function switchPage(pageId) {
-            // Сховати всі сторінки
+           
             document.getElementById('page1').classList.add('hidden');
             document.getElementById('page2').classList.add('hidden');
-            // Показати вибрану сторінку
+          
             document.getElementById(pageId).classList.remove('hidden');
         }
+
+    
+        document.getElementById('contact-form').addEventListener('submit', function(event) {
+          
+            event.preventDefault();
+            
+      
+            var initials = document.getElementById('initials-input').value;
+            var email = document.getElementById('mail-input').value;
+            
+         
+            console.log('ПІБ:', initials);
+            console.log('Email:', email);
+            
+        
+            alert("ПІБ: " + initials + "\nEmail: " + email);
+        });
     </script>
 </body>
 </html>
